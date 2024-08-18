@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% comment %}
+    <link rel="stylesheet" href="style.css" />
+    {% endcomment %}
+    <title>Authentication</title>
+  </head>
+  <body>
+    {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>{{message}}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} 
+    {% block header %} 
+    {% if user.is_authenticated %}
+    <h2>Welcome {{first_name}} to your own Tea Shop!</h2>
+    <a href="/register/signout">Signout</a>
+    {% else %}
+    <h2>Welcome to Taufeeq's tea shop</h2>
+    <div class="auth-nav">
+      <a href="/register/signup">Signup</a>
+      <a href="/register/signin">Signin</a>
+    </div>
+    {% endif %} 
+    {% endblock header %} 
+    {% block form %}{% endblock form %}
+  </body>
+</html>
+
+{% comment %} Template inheritance The most powerful – and thus the most complex
+– part of Django’s template engine is template inheritance. Template inheritance
+allows you to build a base “skeleton” template that contains all the common
+elements of your site and defines blocks that child templates can override. All
+the block tag does is to tell the template engine that a child template may
+override those portions of the template. Content within a {% block %} tag in a
+parent template is always used as a fallback. If you use {% extends %} in a
+template, it must be the first template tag in that template. Template
+inheritance won’t work, otherwise {% endcomment %}

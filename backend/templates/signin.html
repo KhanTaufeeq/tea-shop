@@ -1,0 +1,18 @@
+{% extends "index.html" %} {% block header %}{% endblock header %}
+{% block form %}
+
+<h3>Login into your account!</h3>
+
+<form action="/register/signin/" method="POST">
+    {% csrf_token %}
+
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username"/> <br/>
+
+    <label for="password">Password</label>
+    <input type="password" name="pass1" id="password"/> <br/>
+
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock form %}
